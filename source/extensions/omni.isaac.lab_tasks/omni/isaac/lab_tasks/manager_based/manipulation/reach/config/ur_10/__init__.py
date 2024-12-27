@@ -20,6 +20,9 @@ gym.register(
         "rl_games_cfg_entry_point": f"{agents.__name__}:rl_games_ppo_cfg.yaml",
         "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:UR10ReachPPORunnerCfg",
         "skrl_cfg_entry_point": f"{agents.__name__}:skrl_ppo_cfg.yaml",
+        "sb3-ppo_cfg_entry_point": f"{agents.__name__}:sb3_ppo_cfg.yaml",
+        "sb3-td3_cfg_entry_point": f"{agents.__name__}:sb3_td3_cfg.yaml",
+        "sb3-sac_cfg_entry_point": f"{agents.__name__}:sb3_sac_cfg.yaml",
     },
 )
 
@@ -32,5 +35,8 @@ gym.register(
         "rl_games_cfg_entry_point": f"{agents.__name__}:rl_games_ppo_cfg.yaml",
         "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:UR10ReachPPORunnerCfg",
         "skrl_cfg_entry_point": f"{agents.__name__}:skrl_ppo_cfg.yaml",
+        "sb3-ppo_cfg_entry_point": f"{agents.__name__}:sb3_ppo_cfg.yaml",
+        "sb3-td3_cfg_entry_point": f"{agents.__name__}:sb3_td3_cfg.yaml",
+        "sb3-sac_cfg_entry_point": f"{agents.__name__}:sb3_sac_cfg.yaml",
     },
 )

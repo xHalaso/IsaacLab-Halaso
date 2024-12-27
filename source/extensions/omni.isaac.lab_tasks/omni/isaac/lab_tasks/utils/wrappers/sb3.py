@@ -123,7 +123,7 @@ class Sb3VecEnvWrapper(VecEnv):
 
     """
 
-    def __init__(self, env: ManagerBasedRLEnv | DirectRLEnv):
+    def __init__(self, env: ManagerBasedRLEnv | DirectRLEnv, reward_scale: float = 1.0):
         """Initialize the wrapper.
 
         Args:
@@ -158,6 +158,11 @@ class Sb3VecEnvWrapper(VecEnv):
         # add buffer for logging episodic information
         self._ep_rew_buf = torch.zeros(self.num_envs, device=self.sim_device)
         self._ep_len_buf = torch.zeros(self.num_envs, device=self.sim_device)
+
+         # Pridaný faktor škálovania odmien
+        self.reward_scale = reward_scale
+
+        print(f"\n\n\nREWARD SCALING:{self.reward_scale}")
 
     def __str__(self):
         """Returns the wrapper name and the :attr:`env` representation string."""
@@ -224,6 +229,10 @@ class Sb3VecEnvWrapper(VecEnv):
     def step_wait(self) -> VecEnvStepReturn:  # noqa: D102
         # record step information
         obs_dict, rew, terminated, truncated, extras = self.env.step(self._async_actions)
+
+        # Aplikovanie reward scaling
+        rew = rew * self.reward_scale
+
         # update episode un-discounted return and length
         self._ep_rew_buf += rew
         self._ep_len_buf += 1

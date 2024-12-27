@@ -1,0 +1,26 @@
+n_timesteps: !!float 9e7
+verbose: 0
+tensorboard_log: "./kuka10_tensorboard/"
+
+policy: 'MlpPolicy'
+batch_size: 4096
+gamma: 0.99
+learning_rate: !!float 3e-4
+
+policy_kwargs: "dict(
+                  activation_fn=nn.ELU,
+                  net_arch=[32, 32]
+                )"
+
+device: "cuda:0" 
+
+
+buffer_size: 2000000
+learning_starts: 10000
+gradient_steps: 1
+train_freq: 2
+tau :  0.002
+policy_delay: 3
+
+target_policy_noise: 0.2     
+target_noise_clip: 0.5
